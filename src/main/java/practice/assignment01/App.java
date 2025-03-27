@@ -6,11 +6,24 @@ import jakarta.persistence.*;
 import org.hibernate.*;
 import org.hibernate.cfg.Configuration;
 
+
 public class App 
 {
     public static void main( String[] args )
     {
     	SessionFactory sessionFactory = new HibernateUtil().getSessionFactory();
+    	// Reading Category
+    	Category category = new ReadCategory(sessionFactory).readData(1);
+    	System.out.println(category);
+    	
+    	// Reading Product
+    	Product product = new ReadProduct(sessionFactory).readData(1);
+    	System.out.println(product.toString());
+    	
+    	// Reading Users
+    	Users user = new ReadUsers(sessionFactory).readData(1);
+    	System.out.println(user);
+    	
     	
     	// Creating New Categories
 //    	try {

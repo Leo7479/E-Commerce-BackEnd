@@ -10,7 +10,9 @@ public class ReadCategory {
 	}
 	public Category readData(int id) {
 		Session session = sessionFactory.openSession();
+		session.beginTransaction();
 		Category category = session.get(Category.class, id);
+		session.getTransaction().commit();
 		session.close();
 		return category;
 	}

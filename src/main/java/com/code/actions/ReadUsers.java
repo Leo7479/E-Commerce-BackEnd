@@ -10,7 +10,9 @@ public class ReadUsers {
 	}
 	public Users readData(int id) {
 		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
 		Users user = session.get(Users.class, id);
+		session.getTransaction().commit();
 		session.close();
 		return user;
 	}

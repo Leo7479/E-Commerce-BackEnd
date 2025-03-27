@@ -10,7 +10,9 @@ public class ReadProduct {
 	}
 	public Product readData(int id) {
 		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
 		Product product = session.get(Product.class, id);
+		session.getTransaction().commit();
 		session.close();
 		return product;
 	}

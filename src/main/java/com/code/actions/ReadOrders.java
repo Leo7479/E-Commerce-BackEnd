@@ -10,7 +10,9 @@ public class ReadOrders {
 	}
 	public Orders readData(int id) {
 		Session session = sessionFactory.getCurrentSession();
+		session.beginTransaction();
 		Orders order = session.get(Orders.class, id);
+		session.getTransaction().commit();
 		session.close();
 		return order;
 	}
